@@ -27,7 +27,7 @@ hooks.Filters.CONFIG_DEFAULTS.add_items(
         ("SENTRY_IGNORED_ERRORS", []),
         ("SENTRY_ENVIRONMENT", "production"),
         # Extra initialization options for sentry
-        ("SENTRY_EXTRA_ARGS", {"traces_sample_rate": 1.0, "profiles_sample_rate": 0.1}),
+        ("SENTRY_EXTRA_ARGS", {"traces_sample_rate": 0.0, "profiles_sample_rate": 0.0}),
     ]
 )
 
