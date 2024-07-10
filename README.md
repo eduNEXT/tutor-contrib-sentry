@@ -19,7 +19,22 @@ tutor plugins enable sentry
 This plugin supports the following settings:
 
 - `SENTRY_DSN`: The sentry DSN used for ingestion.
-- `SENTRY_IGNORED_ERRORS`: A list of strings with exceptions types to ignore, e.g: `['AuthFailedError']`.
+- `SENTRY_IGNORED_ERRORS`: A list of rules with exceptions types to ignore, optionally
+  you can ignore only specific exceptions that matches a list of regex.
+
+```yaml
+SENTRY_IGNORED_ERRORS:
+# Ignore all AuthFailedError exceptions
+- exc_class: AuthFailedError
+# Ignore all exceptions that match a regex
+- exc_text:
+  - .*Email or password is incorrect
+# Ignore all exceptions of type AuthFailedError that matches: .*Email or password is incorrect
+- exc_class: AuthFailedError
+  exc_text:
+  - .*Email or password is incorrect
+```
+
 - `SENTRY_ENVIRONMENT`: The sentry environment. Defaults to `production`.
 - `SENTRY_EXTRA_ARGS`: A dictionary with extra arguments for the sentry SDK. e.g:
 
@@ -32,7 +47,7 @@ SENTRY_EXTRA_ARGS:
 ### Recommendations
 
 On production we recommend adjusting both `traces_sample_rate` and `profiles_sample_rate` as those
-can impact performance. See the [sentry configuration options](https://docs.sentry.io/platforms/python/configuration/options/) for more information
+can impact performance. See the [sentry configuration options](https://docs.sentry.io/platforms/python/configuration/options/) for more information.
 
 
 ### License
