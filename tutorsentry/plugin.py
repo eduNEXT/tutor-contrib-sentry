@@ -19,6 +19,15 @@ hooks.Filters.CONFIG_DEFAULTS.add_items(
         # Each new setting is a pair: (setting_name, default_value).
         # Prefix your setting names with 'SENTRY_'.
         ("SENTRY_VERSION", __version__),
+        ("SENTRY_DSN", ""),
+        # The setting SENTRY_IGNORED_ERRORS is a list of rules that defines which exceptions to ignore.
+        # An example below:
+        # SENTRY_IGNORED_ERRORS = ['AuthFailedError']
+        # Every rule support only 2 keys for now:
+        ("SENTRY_IGNORED_ERRORS", []),
+        ("SENTRY_ENVIRONMENT", "production"),
+        # Extra initialization options for sentry
+        ("SENTRY_EXTRA_ARGS", {"traces_sample_rate": 0.0, "profiles_sample_rate": 0.0}),
     ]
 )
 
