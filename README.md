@@ -1,4 +1,4 @@
-# Celery plugin for [Tutor](https://docs.tutor.edly.io)
+# Sentry plugin for [Tutor](https://docs.tutor.edly.io)
 
 A tutor plugin to integration Open edX with Sentry.
 
