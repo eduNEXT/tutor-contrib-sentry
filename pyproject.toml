@@ -30,7 +30,6 @@ dependencies = [
 [project.optional-dependencies]
 dev = [
     "python-semantic-release",
-    "tutor[dev]>=19.0.0,<20.0.0",
 ]
 
 [project.urls]
