@@ -24,12 +24,13 @@ classifiers = [
     "Programming Language :: Python :: 3.12",
 ]
 dependencies = [
-    "tutor>=19.0.0,<20.0.0",
+    "tutor @ git+https://github.com/overhangio/tutor@sumac"
 ]
 
 [project.optional-dependencies]
 dev = [
     "python-semantic-release",
+    "tutor @ git+https://github.com/overhangio/tutor@sumac"
 ]
 
 [project.urls]
