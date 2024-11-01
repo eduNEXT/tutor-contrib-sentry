@@ -30,7 +30,10 @@ dependencies = [
 [project.optional-dependencies]
 dev = [
     "python-semantic-release",
-    "tutor @ git+https://github.com/overhangio/tutor@sumac"
+    "pylint",
+    "black",
+    "mypy",
+    "isort",
 ]
 
 [project.urls]
