@@ -5,7 +5,7 @@ A tutor plugin to integration Open edX with Sentry.
 ## Installation
 
 ```shell
-pip install git+https://github.com/eduNEXT/tutor-contrib-sentry
+pip install tutor-contrib-sentry
 ```
 
 ## Usage
@@ -13,6 +13,8 @@ pip install git+https://github.com/eduNEXT/tutor-contrib-sentry
 ```shell
 tutor plugins enable sentry
 ```
+
+Make sure to rebuld the openedx docker image to install the sentry SDK
 
 ## Configuration
 
