@@ -7,7 +7,7 @@ name = "tutor-contrib-sentry"
 dynamic = ["version"]
 description = "Sentry Integration for Open edX"
 readme = "README.md"
-requires-python = ">=3.7"
+requires-python = ">=3.9"
 license = {text = "AGPLv3"}
 authors = [
     {name = "eduNEXT", email = "technical@edunext.co"},
@@ -18,20 +18,23 @@ classifiers = [
     "License :: OSI Approved :: GNU Affero General Public License v3",
     "Operating System :: OS Independent",
     "Programming Language :: Python",
-    "Programming Language :: Python :: 3.8",
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
 ]
 dependencies = [
-    "tutor>=18.0.0,<19.0.0",
+  "tutor>=19.0.0,<20.0.0",
 ]
 
 [project.optional-dependencies]
 dev = [
+    "black",
+    "build",
+    "isort",
+    "mypy",
+    "pylint",
     "python-semantic-release",
-    "tutor[dev]>=18.0.0,<19.0.0",
 ]
 
 [project.urls]
