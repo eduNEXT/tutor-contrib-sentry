@@ -58,7 +58,7 @@ universal = true
 [tool.semantic_release]
 commit_message = "chore(release): preparing {version}"
 version_variables = [
-    "drydock/__about__.py:__version__",
+    "tutorsentry.__about__.__version__",
 ]
 
 [tool.semantic_release.branches.main]
