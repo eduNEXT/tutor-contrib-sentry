@@ -1,2 +1,2 @@
 RUN --mount=type=cache,target=/openedx/.cache/pip,sharing=shared \
-    pip install "sentry-sdk==2.29.1"
+    pip install "sentry-sdk==2.46.0"

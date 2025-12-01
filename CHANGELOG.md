@@ -13,6 +13,17 @@ See the fragment files in the [changelog.d/ directory](./changelog.d).
 
 <!-- scriv-insert-here -->
 
+<a id='changelog-21.0.0'></a>
+## 21.0.0 — 2026-01-28
+
+### Added
+
+- Add support for the Ulmo release.
+
+### Changed
+
+- Bump the sentry-sdk version to 2.46.0
+
 <a id='changelog-20.0.0'></a>
 ## v20.0.0 (2025-07-02)
 
