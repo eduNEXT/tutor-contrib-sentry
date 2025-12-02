@@ -1,14 +1,10 @@
-[build-system]
-requires = ["setuptools>=42", "wheel"]
-build-backend = "setuptools.build_meta"
-
 [project]
 name = "tutor-contrib-sentry"
-dynamic = ["version"]
+version = "20.0.0"
 description = "Sentry Integration for Open edX"
 readme = "README.md"
-requires-python = ">=3.9"
-license = {text = "AGPLv3"}
+requires-python = ">=3.10"
+license-files = [ "LICENSE" ] 
 authors = [
     {name = "eduNEXT", email = "technical@edunext.co"},
 ]
@@ -18,7 +14,6 @@ classifiers = [
     "License :: OSI Approved :: GNU Affero General Public License v3",
     "Operating System :: OS Independent",
     "Programming Language :: Python",
-    "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
@@ -27,55 +22,48 @@ dependencies = [
   "tutor~=20.0",
 ]
 
-[project.optional-dependencies]
-dev = [
-    "black",
-    "build",
-    "isort",
-    "mypy",
-    "pylint",
-    "python-semantic-release",
-]
-
 [project.urls]
 homepage = "https://github.com/eduNEXT/tutor-contrib-sentry"
 repository = "https://github.com/eduNEXT/tutor-contrib-sentry"
 "Issue tracker" = "https://github.com/eduNEXT/tutor-contrib-sentry/issues"
 
-[tool.setuptools.packages.find]
-where = ["."]
-exclude = ["tests*"]
-
 [project.entry-points."tutor.plugin.v1"]
 sentry = "tutorsentry.plugin"
-
-[tool.setuptools.dynamic]
-version = {attr = "tutorsentry.__about__.__version__"}
 
 [tool.wheel]
 universal = true
 
-[tool.semantic_release]
-commit_message = "chore(release): preparing {version}"
-version_variables = [
-    "tutorsentry/__about__.py:__version__",
+[tool.ruff]
+line-length = 120
+indent-width = 4
+lint.select = [
+  "E4",
+  "E7",
+  "E9",
+  "F",
+  "I",
+  "UP",
 ]
 
-[tool.semantic_release.branches.main]
-match = "(main|master)"
+[tool.scriv]
+version = "literal: pyproject.toml: project.version"
+categories = "Added, Changed, Fixed, Removed"
+format = "md"
+md_header_level = 2
+new_fragment_template = "file: changelog.d/scriv/new_fragment.md.j2"
+entry_title_template = "file: changelog.d/scriv/entry_title.md.j2"
 
-[tool.semantic_release.changelog.environment]
-keep_trailing_newline = true
+[tool.uv.build-backend]
+module-root = "."
+module-name = "tutorsentry"
 
-[tool.semantic_release.changelog]
-exclude_commit_patterns = [
-  "docs:",
-  "build:",
-  "style:",
-  "chore:",
-  "test:",
-  "revert:",
-  "perf:",
-  "refactor:",
-  "ci:",
+[build-system]
+requires = ["uv_build>=0.9.5,<0.10.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "ruff>=0.14.6",
+    "scriv>=1.7.0",
+    "ty>=0.0.1a29",
 ]
