@@ -1,16 +1,18 @@
-import re
+# begin:  tutor-contrib-sentry
 import logging
+import re
 
 logger = logging.getLogger(__file__)
 
 SENTRY_IGNORED_ERRORS = {{SENTRY_IGNORED_ERRORS}}
 
+
 def validate_exc(method, value, exc_value, exc_class_name):
-    if method == 'exc_class':
+    if method == "exc_class":
         # exc_class_name = value
         return exc_class_name == value
 
-    elif method == 'exc_text':
+    elif method == "exc_text":
         exc_text_expr = value
         for expr in exc_text_expr:
             if re.search(expr, exc_value):
@@ -29,18 +31,19 @@ def should_ignore_by_rule(rule, exc_value, exc_class_name):
             return False
     return True
 
+
 def exception_filter_hook(event, hint):
     """
     Calls the proper method to verify which exceptions are ignored
     for sentry
     """
-    exc_text = ''
+    exc_text = ""
     exc_value = None
 
-    if 'log_record' in hint:
-        exc_text = hint['log_record'].message
-    if 'exc_info' in hint:
-        _exc_type, exc_value, _tb = hint['exc_info']
+    if "log_record" in hint:
+        exc_text = hint["log_record"].message
+    if "exc_info" in hint:
+        _exc_type, exc_value, _tb = hint["exc_info"]
         exc_class_name = _exc_type.__name__
         exc_text += str(exc_value)
 
@@ -50,6 +53,7 @@ def exception_filter_hook(event, hint):
             return None
 
     return event
+
 
 try:
     import sentry_sdk
@@ -66,3 +70,4 @@ try:
     )
 except ImportError:
     logger.error("Sentry SDK is not installed.")
+# end:  tutor-contrib-sentry
